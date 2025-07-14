@@ -4,10 +4,7 @@ import React, { useEffect, useRef } from 'react';
 
 const PLAYER_WIDTH: number = 50;
 const PLAYER_HEIGHT: number = 20;
-const PLAYER_SPEED: number = 6;
-const BLOCK_WIDTH: number = 40;
-const BLOCK_HEIGHT: number = 20;
-const BLOCK_START_SPEED: number = 2;
+const P
 const BLOCK_SPEED_INCREMENT: number = 0.2;
 const BLOCK_SPAWN_INTERVAL: number = 1000; // ms
 const DIFFICULTY_INTERVAL: number = 5000; // ms
@@ -85,10 +82,6 @@ const BlockDodgeGame: React.FC = () => {
           width: BLOCK_WIDTH,
           height: BLOCK_HEIGHT,
           x,
-          y: -BLOCK_HEIGHT,
-          speed: blockSpeedRef.current,
-          color: '#e53935',
-        });
         lastBlockTime = timestamp;
       }
       // Increase difficulty
@@ -110,12 +103,7 @@ const BlockDodgeGame: React.FC = () => {
           block.y + block.height > playerRef.current.y
         ) {
           // Intentionally call a function that does not exist
-          nonExistentFunction();
-        }
-        if (block.y > canvas.height) {
-          blocksRef.current.splice(i, 1);
-          scoreRef.current++;
-        }
+          nonE
       }
       drawPlayer(playerRef.current);
       drawScore(scoreRef.current);
