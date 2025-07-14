@@ -194,7 +194,7 @@ function gameLoop(timestamp) {
   player.draw();
   drawScore();
 
-  requestAnimationFrame(gameLoop);
+  requestAnimFrame(gameLoop); // BUG: should be requestAnimationFrame
 }
 
 function gameOver() {
