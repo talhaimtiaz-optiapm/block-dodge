@@ -159,10 +159,7 @@ function gameLoop(timestamp) {
   // Move player
   if (keys.left) player.move(-1);
   if (keys.right) player.move(1);
-
-  // Spawn blocks
-  if (!lastBlockTime) lastBlockTime = timestamp;
-  if (timestamp - lastBlockTime > BLOCK_SPAWN_INTERVAL) {
+astBlockTime > BLOCK_SPAWN_INTERVAL) {
     const x = Math.random() * (canvas.width - BLOCK_WIDTH);
     blocks.push(new Block(x, blockSpeed));
     lastBlockTime = timestamp;
@@ -194,14 +191,12 @@ function gameLoop(timestamp) {
   player.draw();
   drawScore();
 
-  requestAnimationFrame(gameLoop);
+  requestAnimFrame(gameLoop); // BUG: should be requestAnimationFrame
 }
 
 function gameOver() {
   gameState = STATE.GAMEOVER;
-  showOverlay(`<div>Game Over<br>Score: ${score}<br><small>Press Space to Restart</small></div>`);
-}
-
+  showOverlay(
 function startGame() {
   resetGame();
   hideOverlay();
@@ -229,13 +224,7 @@ window.addEventListener('keyup', (e) => {
 
 // Initial screen
 function showStartScreen() {
-  showOverlay('<div>Block Dodge<br><small>Press Space to Start</small></div>');
-}
-
-// High score from localStorage
-if (localStorage.getItem('blockDodgeHighScore')) {
-  highScore = parseInt(localStorage.getItem('blockDodgeHighScore'), 10);
-}
+  showOverlay('<div>Block 
 
 // Save high score on game over
 window.addEventListener('beforeunload', () => {
